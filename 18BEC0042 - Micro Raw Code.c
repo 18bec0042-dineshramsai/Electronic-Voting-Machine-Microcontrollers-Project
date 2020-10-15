@@ -2,24 +2,28 @@
 #include<reg51.h> /*Importing Libraries for all 51 microcontroller Families*/
 #define msec 50
 #define lcd_data_str_pin P2
-sbit rs = P3^0; //Register select (RS) pin
-sbit rw = P3^1; //Read write(RW) pin
-sbit en = P3^6; //Enable(EN) pin
+/*Declaring the Pins for Control Lines of LCD*/
+sbit rs = P3^0; //Register select (RS) pin with 3.0
+sbit rw = P3^1; //Read write(RW) pin with 3.1
+sbit en = P3^6; //Enable(EN) pin with 3.6
 sbit ini_pin = P1^0; // Start voting pin
 sbit stop_pin = P1^5; // Stop voting pin
 
-sbit candidate_1=P1^1; //Candidate1
-sbit candidate_2=P1^2; //Candidate2
-sbit candidate_3=P1^3; //Candidate3
-sbit candidate_4=P1^4; //Candidate4
+/*Declaring Pins for Candidate Buttons*/
+sbit candidate_1=P1^1; //Candidate1 is assigned to Pin 1.1
+sbit candidate_2=P1^2; //Candidate2 is assigned to Pin 1.2
+sbit candidate_3=P1^3; //Candidate3 is assigned to Pin 1.3
+sbit candidate_4=P1^4; //Candidate4 is assigned to Pin 1.4
+
+/*Declaring the necessary variables*/
 int max = 0;
 int carry = 0;
 int arr[4];
 
 int vote_amt[3],j;
-unsigned int vote_1,vote_2,vote_3,vote_4;
+unsigned int vote_1,vote_2,vote_3,vote_4; /*Using Unsigned as votes are always positive*/
 
-void delay(int delay_time) // Time delay function
+void delay(int delay_time) /*User Defined Time delay function*/
 {
 
 int j,k;
@@ -27,7 +31,7 @@ for(j=0;j<=delay_time;j++)
 for(k=0;k<=1000;k++);
 }
 
-void lcd_cmd(unsigned char cmd_addr) //Function to send command to LCD
+void lcd_cmd(unsigned char cmd_addr) //User Defined Function to send command to LCD
 {
 lcd_data_str_pin = cmd_addr;
 en = 1;
