@@ -1,5 +1,5 @@
 /*18BEC0042 - ELECTRONIC VOTING MACHINE USING 8051 - MICROCONTROLLERS PROJECT - RAW CODE */
-#include<reg51.h>
+#include<reg51.h> /*Importing Libraries for all 51 microcontroller Families*/
 #define msec 50
 #define lcd_data_str_pin P2
 sbit rs = P3^0; //Register select (RS) pin
