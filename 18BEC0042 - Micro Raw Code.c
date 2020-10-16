@@ -159,30 +159,30 @@ lcd_cmd(0x80);/*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
 lcd_data_str("P1");/*Displays "P1" */
 delay(msec);
-lcd_cmd(0x84);
+lcd_cmd(0x84); /*Force cursor to jump to next bit giving one bit gap*/
 delay(msec);
-lcd_data_str("P2");
+lcd_data_str("P2");/*Displays "P2" */
 delay(msec);
-lcd_cmd(0x88);
+lcd_cmd(0x88);/*Force cursor to jump to next bit giving one bit gap*/
 delay(msec);
-lcd_data_str("P3");
+lcd_data_str("P3");/*Displays "P3" */
 delay(msec);
-lcd_cmd(0x8C);
+lcd_cmd(0x8C);/*Force cursor to jump to next bit giving one bit gap*/
 delay(msec);
-lcd_data_str("P4");
+lcd_data_str("P4");/*Displays "P4" */
 delay(msec);
 
 vote_count();
-lcd_cmd(0x01);
+lcd_cmd(0x01);/*Command for clearing the Screen*/
 delay(msec);
-lcd_cmd(0x85);
+lcd_cmd(0x85);/*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("Thank");
+lcd_data_str("Thank");/*Displays 'THANK' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/*Command for shifting cursor position to right */
 delay(msec);
 
-lcd_data_str("You!!");
+lcd_data_str("You!!");/*Displays You */
 delay(100);
 }
 
@@ -190,62 +190,63 @@ void results() // Function to show results
 {
 int i;
 carry = 0;
-lcd_cmd(0x01);
+lcd_cmd(0x01); /*Command for clearing the screen */
 delay(msec);
-lcd_cmd(0x80);
+lcd_cmd(0x80);/*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("Results");
+lcd_data_str("Results");/*Displays 'RESULTS' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/*Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("Are");
+lcd_data_str("Are");/*Displays 'ARE' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/*Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("Out");
-delay(msec);
-
-lcd_cmd(0x01);
+lcd_data_str("Out");/* Displays 'OUT' */
 delay(msec);
 
-lcd_cmd(0x80);
-delay(msec);
-lcd_data_str("P1");
-delay(msec);
-lcd_cmd(0x84);
-delay(msec);
-lcd_data_str("P2");
-delay(msec);
-lcd_cmd(0x88);
-delay(msec);
-lcd_data_str("P3");
-delay(msec);
-lcd_cmd(0x8C);
-delay(msec);
-lcd_data_str("P4");
+lcd_cmd(0x01); /*Command for clearing the screen */
 delay(msec);
 
-lcd_cmd(0xC0);
+lcd_cmd(0x80);/*Command for forcing the cursor to begin in 1st Line*/
+delay(msec);
+lcd_data_str("P1");/*Displays P1*/
+delay(msec);
+lcd_cmd(0x84);/*Force cursor to jump to next bit giving one bit gap*/
+delay(msec);
+lcd_data_str("P2");/*Displays P2*/
+delay(msec);
+lcd_cmd(0x88);/*Force cursor to jump to next bit giving one bit gap*/
+delay(msec);
+lcd_data_str("P3");/*Displays P3*/
+delay(msec);
+lcd_cmd(0x8C);/*Force cursor to jump to next bit giving one bit gap*/
+delay(msec);
+lcd_data_str("P4");/*Displays P4 */
+delay(msec);
+
+lcd_cmd(0xC0);/* Command for forcing cursor to begin in 2nd Line*/
 delay(100);
-lcd_data_int(vote_1);
+lcd_data_int(vote_1);/*Displays how many votes are casted for P1 */
 delay(msec);
 
-lcd_cmd(0xC4);
+lcd_cmd(0xC4);/*Force cursor to jump to next bit giving one bit gap in 2nd Line*/
 delay(msec);
-lcd_data_int(vote_2);
+lcd_data_int(vote_2);/*Displays how many votes are casted for P2 */
 
 delay(msec);
 
-lcd_cmd(0xC8);
+lcd_cmd(0xC8);/*Force cursor to jump to next bit giving one bit gap in 2nd Line*/
 delay(msec);
-lcd_data_int(vote_3);
+lcd_data_int(vote_3);/*Displays how many votes are casted for P3 */
 delay(msec);
 
-lcd_cmd(0xCC);
+lcd_cmd(0xCC);/*Force cursor to jump to next bit giving one bit gap in 2nd Line*/
 delay(msec);
-lcd_data_int(vote_4);
+lcd_data_int(vote_4);/*Displays how many votes are casted for P4 */
 delay(300);
 
+ /*Creating Numerical Arrays for storing no:of votes */ 
 arr[0] = vote_1;
 arr[1] = vote_2;
 arr[2] = vote_3;
@@ -260,79 +261,77 @@ max = arr[i];
 if ( (vote_1 == max) && ( vote_2 != max) && (vote_3 != max)&& (vote_4 != max) )
 {
 
-carry = 1;
-lcd_cmd(0x01);
+carry = 1;
+lcd_cmd(0x01); /*Command for clearing the screen */
 delay(msec);
-lcd_cmd(0x82);
+lcd_cmd(0x82);/*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("Hurray!!!");
+lcd_data_str("Hurray!!!");/* Displays 'HURRAY' */
 delay(50);
-lcd_cmd(0xC4);
+lcd_cmd(0xC4);/*Command for forcing the cursor to begin in 2nd Line*/
 delay(msec);
-lcd_data_str("P1");
+lcd_data_str("P1");/* Displays 'P1' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/* Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("wins");
+lcd_data_str("wins");/*Displays 'WINS' */
 delay(msec);
 }
 
 if ( (vote_2 == max) && ( vote_1 != max) && (vote_3 != max)&& (vote_4 != max) )
 {
 carry = 1;
-lcd_cmd(0x01);
+lcd_cmd(0x01);/*Command for clearing the screen */
 delay(msec);
-lcd_cmd(0x82);
+lcd_cmd(0x82);/*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("Hurray!!!");
-
+lcd_data_str("Hurray!!!");/* Displays 'HURRAY' */
 delay(50);
-lcd_cmd(0xC4);
+lcd_cmd(0xC4);/*Command for forcing the cursor to begin in 2nd Line*/
 delay(msec);
-lcd_data_str("P2");
+lcd_data_str("P2");/* Displays 'P2' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/* Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("wins");
+lcd_data_str("wins");/*Displays 'WINS' */
 delay(msec);
 }
 
 if ( (vote_3 == max) && ( vote_2 != max) && (vote_1 != max)&& (vote_4 != max) )
 {
 carry = 1;
-lcd_cmd(0x01);
+lcd_cmd(0x01); /*Command for clearing the screen */
 delay(msec);
-lcd_cmd(0x82);
+lcd_cmd(0x82); /*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("Hurray!!!");
+lcd_data_str("Hurray!!!"); /* Displays 'HURRAY' */
 delay(50);
-lcd_cmd(0xC4);
+lcd_cmd(0xC4); /*Command for forcing the cursor to begin in 2nd Line*/
 delay(msec);
-lcd_data_str("P3");
+lcd_data_str("P3"); /* Displays 'P3' */
 delay(msec);
-lcd_cmd(0x14);
-
+lcd_cmd(0x14); /* Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("wins");
+lcd_data_str("wins"); /*Displays 'WINS' */
 delay(msec);
 }
 
 if ( (vote_4 == max) && ( vote_2 != max) && (vote_3 != max)&& (vote_1 != max) )
 {
-carry = 1;
-lcd_cmd(0x01);
+carry = 1; 
+lcd_cmd(0x01); /*Command for clearing the screen */
 delay(msec);
-lcd_cmd(0x82);
+lcd_cmd(0x82); /*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("Hurray!!!");
+lcd_data_str("Hurray!!!"); /* Displays 'HURRAY' */
 delay(50);
-lcd_cmd(0xC4);
+lcd_cmd(0xC4); /*Command for forcing the cursor to begin in 2nd Line*/
 delay(msec);
-lcd_data_str("P4");
+lcd_data_str("P4"); /* Displays 'P4' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14); /* Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("wins");
+lcd_data_str("wins"); /*Displays 'WINS' */
 delay(msec);
 }
 
