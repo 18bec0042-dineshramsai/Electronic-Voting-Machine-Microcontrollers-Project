@@ -335,70 +335,71 @@ lcd_data_str("wins"); /*Displays 'WINS' */
 delay(msec);
 }
 
+/* LCD Code for displaying message when tie occurs between two or more particiants */ 
 if (carry==0)
-
 {
-lcd_cmd(0x01);
+ /* Code for Displaying String 'CLASH BETWEEN' */
+lcd_cmd(0x01); /*Command for clearing the screen */
 delay(msec);
-lcd_cmd(0x82);
+lcd_cmd(0x82); /*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str("clash");
+lcd_data_str("clash");/* Displays CLASH*/
 delay(50);
-lcd_cmd(0x14);
+lcd_cmd(0x14); /* Command for shifting cursor position to right */
 delay(msec);
-lcd_data_str("between!!!");
+lcd_data_str("between!!!"); /*Displays 'BETWEEN' */
 delay(50);
 if(vote_2 == max)
 {
-lcd_cmd(0xC5);
-lcd_data_str("P2");
+lcd_cmd(0xC5); /*Command for forcing the cursor to begin in 2nd Line with a gap of a bit*/
+lcd_data_str("P2"); /*Displays 'P2' */
 delay(50);
 }
 if(vote_3 == max)
 {
-lcd_cmd(0xC9);
-lcd_data_str("P3");
+lcd_cmd(0xC9); /*Command for forcing the cursor to begin in 2nd Line with a gap of a bit*/
+lcd_data_str("P3"); /*Displays 'P3' */
 delay(50);
 }
 if(vote_4 == max)
 {
 
-lcd_cmd(0xCD);
-lcd_data_str("P4");
+lcd_cmd(0xCD); /*Command for forcing the cursor to begin in 2nd Line with a gap of a bit*/
+lcd_data_str("P4"); /*Displays 'P4' */
 delay(50);
 }
 }
 }
 
-void main()
+void main() /*Main Function*/
 {
 ini_pin = stop_pin = 1;
 vote_1 = vote_2 = vote_3 = vote_4 = 0;
 candidate_1 = candidate_2 = candidate_3 = candidate_4 = 0;
-lcd_cmd(0x38);
+lcd_cmd(0x38); /*Command for 8bit 2 row configuration or 5x7 Matrix Crystal Activation*/
 delay(msec);
-lcd_cmd(0x0E);
+lcd_cmd(0x0E); /*Command for turning on Display with Cursor Blinking*/
 delay(msec);
-lcd_cmd(0x01);
+lcd_cmd(0x01);/*Command for clearing the screen */ 
 delay(msec);
-lcd_cmd(0x80);
+lcd_cmd(0x80);/* Command for forcing the cursor to begin in first line */
 delay(msec);
-lcd_data_str( "Press" );
+lcd_data_str( "Press" );/* Displays 'PRESS' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14); /* Command for shifting Cursor position to Right */
 delay(msec);
-lcd_data_str("init");
+lcd_data_str("init"); /*Displays INIT */
 
 delay(msec);
 
 delay(msec);
-lcd_cmd(0xC0);
+lcd_cmd(0xC0); /* Command for forcing the cursor to begin in 2nd line */
 delay(msec);
-lcd_data_str("to");
+lcd_data_str("to");/* Displays 'TO' */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14); /* Command for shifting Cursor position to Right */
 delay(msec);
-lcd_data_str("begin");
+lcd_data_str("begin"); /* DISPLAYS 'BEGIN' */
 delay(100);
 while(1)
 {
