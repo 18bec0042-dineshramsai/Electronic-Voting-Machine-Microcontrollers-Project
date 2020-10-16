@@ -23,7 +23,7 @@ int arr[4];
 int vote_amt[3],j;
 unsigned int vote_1,vote_2,vote_3,vote_4; /*Using Unsigned as votes are always positive*/
 
-void delay(int delay_time) /*User Defined Time delay function*/
+void delay(int delay_time) /*User Defined Time delay function. We have to maintain some delay for passing each value to screen between logic high and low*/
 {
 
 int j,k;
@@ -121,11 +121,11 @@ vote_4 = vote_4 + 1;
 
 void lcd_ini()
 {
-lcd_cmd(0x38);
-delay(msec);
+lcd_cmd(0x38); /*Command for 8bit 2 row configuration or 5x7 Matrix Crystal Activation*/
+delay(msec); /*Delay between each command so that the machine/lcd can execute*/
 lcd_cmd(0x0E);
 delay(msec);
-lcd_cmd(0x01);
+lcd_cmd(0x01); /*Command for Clearing the Screen*/
 delay(msec);
 lcd_cmd(0x81);
 delay(msec);
