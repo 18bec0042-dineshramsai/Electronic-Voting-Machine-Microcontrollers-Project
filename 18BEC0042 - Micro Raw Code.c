@@ -123,41 +123,41 @@ void lcd_ini()
 {
 lcd_cmd(0x38); /*Command for 8bit 2 row configuration or 5x7 Matrix Crystal Activation*/
 delay(msec); /*Delay between each command so that the machine/lcd can execute*/
-lcd_cmd(0x0E);
+lcd_cmd(0x0E);/*Command for turning on Display with Cursor Blinking*/
 delay(msec);
 lcd_cmd(0x01); /*Command for Clearing the Screen*/
 delay(msec);
-lcd_cmd(0x81);
+lcd_cmd(0x81);/*Command for Force Cursor to Begin in 1st Line*/
 delay(msec);
 
-lcd_data_str("Welcome!!!");
+lcd_data_str("Welcome!!!"); /*Displays Welcome Message*/
 delay(100);
-lcd_cmd(0x01);
+lcd_cmd(0x01); /*Command for clearing the Screen*/
 delay(msec);
-lcd_cmd(0x80);
+lcd_cmd(0x80); /*Command for forcing the cursor to begin in 1st Line*/
 delay(msec);
-lcd_data_str( "Press" );
+lcd_data_str( "Press" );/*Displays "Press" */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/*Command for shifting cursor position to right*/
 delay(msec);
-lcd_data_str("button");
+lcd_data_str("button");/*Displays "BUTTON" */
 delay(msec);
 
 delay(msec);
-lcd_cmd(0xC0);
+lcd_cmd(0xC0);/* Command for forcing cursor to begin in 2nd Line*/
 delay(msec);
-lcd_data_str("to");
+lcd_data_str("to");/*Displays TO */
 delay(msec);
-lcd_cmd(0x14);
+lcd_cmd(0x14);/*Command for shifting cursor position to right*/
 delay(msec);
-lcd_data_str("vote");
+lcd_data_str("vote");/*Displays "VOTE" */
 delay(100);
-lcd_cmd(0x01);
+lcd_cmd(0x01);/*Command for clearing the Screen*/
 delay(msec);
-lcd_cmd(0x80);
+lcd_cmd(0x80);/*Command for forcing the cursor to begin in 1st Line*/
 
 delay(msec);
-lcd_data_str("P1");
+lcd_data_str("P1");/*Displays "P1" */
 delay(msec);
 lcd_cmd(0x84);
 delay(msec);
